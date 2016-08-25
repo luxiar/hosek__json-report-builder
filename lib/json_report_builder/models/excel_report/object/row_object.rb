@@ -1,0 +1,11 @@
+require "json_report_builder/models/excel_report/object/base"
+require "json_report_builder/models/excel_report/object/col_object"
+
+module JsonReportBuilder::ExcelReport::Object
+  class RowObject < Base
+    attribute :row_index,          Integer
+    attribute :row_index_template, Integer
+    attribute :height_in_points,   Float
+    attribute :cols,               Array[ColObject]
+  end
+end
