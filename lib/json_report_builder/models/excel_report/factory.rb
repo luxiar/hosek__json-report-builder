@@ -1,4 +1,5 @@
 require 'rails'
+require 'fileutils'
 
 module JsonReportBuilder::ExcelReport
   class Factory
@@ -16,7 +17,7 @@ module JsonReportBuilder::ExcelReport
       result = system(command)
       fail '帳票の作成に失敗しました' unless result
 
-      File.delete(@json_file_name) if JsonReportBuilder.config.delete_json && File.exist?(@json_file_name)
+      File.delete(@json_file_name) if JsonReportBuilder.config.delete_json && FileTest.exist?(@json_file_name)
       @output_file_name
     end
 
@@ -41,13 +42,13 @@ module JsonReportBuilder::ExcelReport
 
     def json_excel_reports(file_name)
       path = File.join(JsonReportBuilder.config.tmp_path, @separate)
-      FileUtils.mkdir_p(path) unless FileTest.exist?(path)
+      FileUtils.mkdir_p(path)
       "#{ path + file_name }_#{ Time.current.strftime('%Y%m%d-%H%M%S') }.json"
     end
 
     def output_file(file_name)
       path = File.join(JsonReportBuilder.config.tmp_path, @separate)
-      FileUtils.mkdir_p(path) unless FileTest.exist?(path)
+      FileUtils.mkdir_p(path)
       "#{ path + file_name }_#{ Time.current.strftime('%Y%m%d-%H%M%S') }.xlsx"
     end
   end
