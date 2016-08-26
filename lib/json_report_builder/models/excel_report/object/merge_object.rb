@@ -1,5 +1,3 @@
-require "json_report_builder/models/excel_report/object/base"
-
 module JsonReportBuilder::ExcelReport::Object
   class MergeObject < Base
     attribute :start_row_index, Integer

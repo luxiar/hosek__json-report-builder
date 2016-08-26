@@ -1,6 +1,5 @@
 require 'spec_helper'
 require 'models/excel_report/builder/sample_builder'
-require "json_report_builder/models/excel_report/factory"
 
 describe JsonReportBuilder do
   it 'has a version number' do

@@ -1,4 +1,3 @@
-require "json_report_builder/models/excel_report/object/base"
 require "json_report_builder/models/excel_report/object/row_object"
 require "json_report_builder/models/excel_report/object/merge_object"
 

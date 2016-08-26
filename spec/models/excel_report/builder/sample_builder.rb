@@ -1,9 +1,3 @@
-require "json_report_builder/models/excel_report/builder/base"
-require "json_report_builder/models/excel_report/object/col_object"
-require "json_report_builder/models/excel_report/object/excel_object"
-require "json_report_builder/models/excel_report/object/merge_object"
-require "json_report_builder/models/excel_report/object/row_object"
-require "json_report_builder/models/excel_report/object/sheet_object"
 require 'virtus'
 
 module JsonReportBuilder::ExcelReport::Builder

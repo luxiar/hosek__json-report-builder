@@ -1,6 +1,3 @@
-require 'spec_helper'
-require "json_report_builder/models/excel_report/object/excel_object"
-
 describe JsonReportBuilder::ExcelReport::Object::ExcelObject do
   context 'camelizeのjson形式で取得できるか' do
     let(:json) { JsonReportBuilder::ExcelReport::Object::ExcelObject.new.to_json_camelize_all_keys }

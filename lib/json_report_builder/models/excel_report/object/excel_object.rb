@@ -1,4 +1,3 @@
-require "json_report_builder/models/excel_report/object/base"
 require "json_report_builder/models/excel_report/object/sheet_object"
 
 module JsonReportBuilder::ExcelReport::Object
