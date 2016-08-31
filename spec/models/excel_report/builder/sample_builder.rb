@@ -27,7 +27,8 @@ module JsonReportBuilder::ExcelReport::Builder
     def create_sheet1
       sheet = SheetObject.new(
         template_sheet_name: 'template1',
-        output_sheet_name: 'data1'
+        output_sheet_name: 'data1',
+        new_name: 'test_sheet1'
       )
       @excel_object.sheets << sheet
 
