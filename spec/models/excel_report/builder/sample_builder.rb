@@ -28,7 +28,11 @@ module JsonReportBuilder::ExcelReport::Builder
       sheet = SheetObject.new(
         template_sheet_name: 'template1',
         output_sheet_name: 'data1',
-        new_name: 'test_sheet1'
+        new_name: 'test_sheet1',
+        print_col_index_start: 0,
+        print_col_index_end: 10,
+        print_row_index_start: 0,
+        print_row_index_end: 10
       )
       @excel_object.sheets << sheet
 
