@@ -5,7 +5,7 @@ module JsonReportBuilder::ExcelReport
   class Factory
     def initialize(excel_object:, separate: '')
       @excel_object = excel_object
-      @separate = separate
+      @separate = separate.blank? ? '' : separate
     end
 
     #
@@ -43,13 +43,13 @@ module JsonReportBuilder::ExcelReport
     def json_excel_reports(file_name)
       path = File.join(JsonReportBuilder.config.tmp_path, @separate)
       FileUtils.mkdir_p(path)
-      "#{ path + file_name }_#{ Time.current.strftime('%Y%m%d-%H%M%S') }.json"
+      "#{ path }/#{ file_name }_#{ Time.current.strftime('%Y%m%d-%H%M%S') }.json"
     end
 
     def output_file(file_name)
       path = File.join(JsonReportBuilder.config.tmp_path, @separate)
       FileUtils.mkdir_p(path)
-      "#{ path + file_name }_#{ Time.current.strftime('%Y%m%d-%H%M%S') }.xlsx"
+      "#{ path }/#{ file_name }_#{ Time.current.strftime('%Y%m%d-%H%M%S') }.xlsx"
     end
   end
 end

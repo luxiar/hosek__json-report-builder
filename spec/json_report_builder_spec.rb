@@ -9,7 +9,7 @@ describe JsonReportBuilder do
   describe '出力実行' do
     subject { File.exists?(output_file_name) }
     let(:builder) { JsonReportBuilder::ExcelReport::Builder::SampleBuilder.new }
-    let(:output_file_name) { JsonReportBuilder.build(tmp_file_name: 'test', excel_object: builder.excel_object) }
+    let(:output_file_name) { JsonReportBuilder.build(tmp_file_name: 'test', excel_object: builder.excel_object, separate: 'sep') }
     before { builder.sample }
     # 作成したエクセルファイルが見たい場合には、このafterをコメント化します
     after { File.delete(output_file_name) if File.exist?(output_file_name) }
