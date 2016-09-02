@@ -9,7 +9,7 @@ module JsonReportBuilder
   include JsonReportBuilder::ExcelReport
 
   # return output_file_name
-  def self.build(tmp_file_name:, excel_object:, separate: '')
+  def self.create(tmp_file_name:, excel_object:, separate: '')
     Factory.new(excel_object: excel_object, separate: separate).create(tmp_file_name)
   end
 end
