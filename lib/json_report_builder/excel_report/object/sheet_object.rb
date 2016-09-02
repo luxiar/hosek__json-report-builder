@@ -1,5 +1,5 @@
-require "json_report_builder/models/excel_report/object/row_object"
-require "json_report_builder/models/excel_report/object/merge_object"
+require "json_report_builder/excel_report/object/row_object"
+require "json_report_builder/excel_report/object/merge_object"
 
 module JsonReportBuilder::ExcelReport::Object
   class SheetObject < Base

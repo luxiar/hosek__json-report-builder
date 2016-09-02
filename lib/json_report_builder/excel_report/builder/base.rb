@@ -1,5 +1,5 @@
 require 'virtus'
-require "json_report_builder/models/excel_report/object/excel_object"
+require "json_report_builder/excel_report/object/excel_object"
 
 module JsonReportBuilder::ExcelReport::Builder
   class Base

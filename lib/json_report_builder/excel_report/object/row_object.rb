@@ -1,4 +1,4 @@
-require "json_report_builder/models/excel_report/object/col_object"
+require "json_report_builder/excel_report/object/col_object"
 
 module JsonReportBuilder::ExcelReport::Object
   class RowObject < Base

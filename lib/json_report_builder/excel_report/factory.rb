@@ -34,7 +34,7 @@ module JsonReportBuilder::ExcelReport
     def create_command_str
       command_strs = []
       command_strs << 'java -jar'
-      command_strs << File.join(File.expand_path('../../../', __FILE__), 'jar', 'json_report_builder.jar')
+      command_strs << File.join(File.expand_path('../../', __FILE__), 'jar', 'json_report_builder.jar')
       command_strs << @json_file_name
       command_strs << @output_file_name
       command_strs.join(' ')

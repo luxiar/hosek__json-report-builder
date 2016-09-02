@@ -1,4 +1,4 @@
-require "json_report_builder/models/excel_report/object/sheet_object"
+require "json_report_builder/excel_report/object/sheet_object"
 
 module JsonReportBuilder::ExcelReport::Object
   class ExcelObject < Base
