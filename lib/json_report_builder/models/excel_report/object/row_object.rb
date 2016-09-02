@@ -5,6 +5,7 @@ module JsonReportBuilder::ExcelReport::Object
     attribute :row_index,          Integer
     attribute :row_index_template, Integer
     attribute :height_in_points,   Float
+    attribute :row_break,          Boolean, default: false
     attribute :cols,               Array[ColObject]
   end
 end

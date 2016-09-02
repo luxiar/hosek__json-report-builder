@@ -20,6 +20,7 @@ module JsonReportBuilder::ExcelReport::Builder
 
       create_sheet1
       create_sheet2
+      create_sheet3
     end
 
     private
@@ -82,6 +83,7 @@ module JsonReportBuilder::ExcelReport::Builder
         row.cols << ColObject.new(col_index: 0, value: record.zip_code)
         row.cols << ColObject.new(col_index: 1, value: record.address)
         row.cols << ColObject.new(col_index: 3, value: record.recital)
+        row.row_break = true
         sheet.rows << row
         sheet.merges << MergeObject.new(start_row_index: row_index, start_col_index: 1, end_row_index: row_index, end_col_index: 2)
         sheet.merges << MergeObject.new(start_row_index: row_index, start_col_index: 3, end_row_index: row_index, end_col_index: 6)
@@ -90,8 +92,32 @@ module JsonReportBuilder::ExcelReport::Builder
 
     def create_sheet2
       sheet = SheetObject.new(
-        template_sheet_name: 'template2',
+        template_sheet_name: 'template1',
         output_sheet_name: 'data2'
+      )
+      @excel_object.sheets << sheet
+
+      sheet.rows << RowObject.new(row_index: 0, row_index_template: 0)
+      sheet.rows << RowObject.new(row_index: 1, row_index_template: 1)
+
+      # paste shrink size
+      row = RowObject.new(row_index: 3, row_index_template: 3)
+      row.cols << ColObject.new(col_index: 0, value: @fixtures + 'flower.jpg', type: ColObject::TYPE_IMAGE, pic_row_index_e: 5, pic_col_index_e: 2)
+      # paste original size
+      row.cols << ColObject.new(col_index: 4, value: @fixtures + 'flower.jpg', type: ColObject::TYPE_IMAGE)
+      sheet.rows << row
+
+      # png too
+      row = RowObject.new(row_index: 31, row_index_template: 3)
+      row.cols << ColObject.new(col_index: 0, value: @fixtures + 'image.png', type: ColObject::TYPE_IMAGE)
+      sheet.rows << row
+    end
+
+    def create_sheet3
+      sheet = SheetObject.new(
+        template_sheet_name: 'template2',
+        output_sheet_name: '',
+        new_name: 'fromT'
       )
       @excel_object.sheets << sheet
 
