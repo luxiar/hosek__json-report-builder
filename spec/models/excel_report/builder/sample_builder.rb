@@ -21,6 +21,7 @@ module JsonReportBuilder::ExcelReport::Builder
       create_sheet1
       create_sheet2
       create_sheet3
+      create_sheet4
     end
 
     private
@@ -134,6 +135,32 @@ module JsonReportBuilder::ExcelReport::Builder
       # png too
       row = RowObject.new(row_index: 31, row_index_template: 3)
       row.cols << ColObject.new(col_index: 0, value: @fixtures + 'image.png', type: ColObject::TYPE_IMAGE)
+      sheet.rows << row
+    end
+
+    def create_sheet4
+      sheet = SheetObject.new(
+        template_sheet_name: 'template3',
+        output_sheet_name: 'data3'
+      )
+      @excel_object.sheets << sheet
+
+      sheet.rows << RowObject.new(row_index: 0, row_index_template: 0)
+      sheet.rows << RowObject.new(row_index: 1, row_index_template: 1)
+      sheet.rows << RowObject.new(row_index: 2, row_index_template: 2)
+      row = RowObject.new(row_index: 3, row_index_template: 3)
+      12.times do |t|
+        row.cols << ColObject.new(col_index: t + 1, value: t + 1, copy_row_index: 3, copy_col_index: 1)
+      end
+      row.cols << ColObject.new(col_index: 13, value: '合計', copy_row_index: 3, copy_col_index: 2)
+      sheet.rows << row
+
+      row = RowObject.new(row_index: 4, row_index_template: 4)
+      row.cols << ColObject.new(col_index: 0, value: 1)
+      12.times do |t|
+        row.cols << ColObject.new(col_index: t + 1, value: Random.rand(1..100), copy_row_index: 4, copy_col_index: 1, type: ColObject::TYPE_DOUBLE)
+      end
+      row.cols << ColObject.new(col_index: 13, value: 'SUM(B5:M5)', copy_row_index: 4, copy_col_index: 2, type: ColObject::TYPE_FORMULA)
       sheet.rows << row
     end
   end

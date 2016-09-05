@@ -15,5 +15,11 @@ module JsonReportBuilder::ExcelReport::Object
     # TYPE_IMAGEのときに、画像サイズをそのまま使いたい場合に-1を指定する
     attribute :pic_row_index_e, Integer, default: -1
     attribute :pic_col_index_e, Integer, default: -1
+    # mergeしたcellの場合、自動高さ調節ができないので、計算で高さ調節してあげる
+    # その場合に、列数を基準とするので、mergeした範囲の列数を指定する（ただしぴったりフィットはしません）
+    attribute :calc_height_for_merge_col, Integer
+    # 動的に列が増える場合に、コピー元となるtemplateシートのセルを指定する
+    attribute :copy_row_index, Integer, default: -1
+    attribute :copy_col_index, Integer, default: -1
   end
 end
