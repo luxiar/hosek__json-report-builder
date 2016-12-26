@@ -1,15 +1,18 @@
 require 'virtus'
-require "json_report_builder/excel_report/object/excel_object"
+require 'json_report_builder/excel_report/object/excel_object'
 
-module JsonReportBuilder::ExcelReport::Builder
-  class Base
-    include Virtus.model
-    include JsonReportBuilder::ExcelReport::Object
-    # ここはvirtusモデルから参照するようで、名前空間を頭から指定しないとattributeが作成できない
-    attribute :excel_object, ExcelObject
+module JsonReportBuilder
+  module ExcelReport
+    module Builder
+      class Base
+        include Virtus.model
 
-    def initialize
-      @excel_object = ExcelObject.new
+        attribute :excel_object, Object::ExcelObject
+
+        def initialize
+          @excel_object = Object::ExcelObject.new
+        end
+      end
     end
   end
 end

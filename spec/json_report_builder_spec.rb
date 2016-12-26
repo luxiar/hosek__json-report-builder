@@ -7,12 +7,15 @@ describe JsonReportBuilder do
   end
 
   describe '出力実行' do
-    subject { File.exists?(output_file_name) }
+    subject { File.exist?(output_file_name) }
+
     let(:builder) { JsonReportBuilder::ExcelReport::Builder::SampleBuilder.new }
     let(:output_file_name) { JsonReportBuilder.create(tmp_file_name: 'test', builder: builder, separate: 'sep') }
+
+    # 作成したエクセルファイルが見たい場合には、afterをコメント化
     before { builder.sample }
-    # 作成したエクセルファイルが見たい場合には、このafterをコメント化します
-    #after { File.delete(output_file_name) if File.exist?(output_file_name) }
+    after { File.delete(output_file_name) if File.exist?(output_file_name) }
+
     context 'templateファイルが見つかった場合' do
       it '正常にエクセルファイルが作られること' do
         is_expected.to be_truthy
