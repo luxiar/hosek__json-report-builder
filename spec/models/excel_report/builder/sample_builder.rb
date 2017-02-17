@@ -23,6 +23,7 @@ module JsonReportBuilder
           create_sheet2
           create_sheet3
           create_sheet4
+          create_sheet5
         end
 
         private
@@ -163,6 +164,21 @@ module JsonReportBuilder
           end
           row.cols << Object::ColObject.new(col_index: 13, value: 'SUM(B5:M5)', copy_row_index: 4, copy_col_index: 2, type: Object::ColObject::TYPE_FORMULA)
           sheet.rows << row
+        end
+
+        def create_sheet5
+          sheet = Object::SheetObject.new(
+            output_sheet_name: 'values',
+            output_sheet_hide: true
+          )
+          @excel_object.sheets << sheet
+
+          sheet.replaceValues << Object::ReplaceValueObject.new(value: '123-4567', replace_text: '<COMPANY_POST_CODE>', direct: false)
+          sheet.replaceValues << Object::ReplaceValueObject.new(value: 'あいうえお', replace_text: '<COMPANY_NAME>', direct: false)
+          sheet.replaceValues << Object::ReplaceValueObject.new(value: '0123', replace_text: '<COMPANY_CODE>', direct: false)
+          sheet.replaceValues << Object::ReplaceValueObject.new(value: '1000000', replace_text: '<AMOUNT>', direct: false)
+          sheet.replaceValues << Object::ReplaceValueObject.new(value: '2017/1/1', replace_text: '<ORDER_DATE>', direct: false)
+          sheet.replaceValues << Object::ReplaceValueObject.new(value: '直接変更', replace_text: '<DIRECT_TEXT>')
         end
       end
     end
