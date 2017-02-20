@@ -173,11 +173,11 @@ module JsonReportBuilder
           )
           @excel_object.sheets << sheet
 
-          sheet.replaceValues << Object::ReplaceValueObject.new(value: '123-4567', replace_text: '<COMPANY_POST_CODE>', direct: false)
-          sheet.replaceValues << Object::ReplaceValueObject.new(value: 'あいうえお', replace_text: '<COMPANY_NAME>', direct: false)
-          sheet.replaceValues << Object::ReplaceValueObject.new(value: '0123', replace_text: '<COMPANY_CODE>', direct: false)
-          sheet.replaceValues << Object::ReplaceValueObject.new(value: '1000000', replace_text: '<AMOUNT>', direct: false)
-          sheet.replaceValues << Object::ReplaceValueObject.new(value: '2017/1/1', replace_text: '<ORDER_DATE>', direct: false)
+          sheet.replaceValues << Object::ReplaceValueObject.new(value: '123-4567', replace_text: '<COMPANY_POST_CODE>')
+          sheet.replaceValues << Object::ReplaceValueObject.new(value: 'あいうえお', replace_text: '<COMPANY_NAME>')
+          sheet.replaceValues << Object::ReplaceValueObject.new(value: '0123', replace_text: '<COMPANY_CODE>')
+          sheet.replaceValues << Object::ReplaceValueObject.new(value: '1000000', replace_text: '<AMOUNT>', type: Object::ColObject::TYPE_DOUBLE)
+          sheet.replaceValues << Object::ReplaceValueObject.new(value: '2017/1/1', replace_text: '<ORDER_DATE>', type: Object::ColObject::TYPE_DATE)
           sheet.replaceValues << Object::ReplaceValueObject.new(value: '直接変更', replace_text: '<DIRECT_TEXT>')
         end
       end
