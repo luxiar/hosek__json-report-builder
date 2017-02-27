@@ -178,7 +178,10 @@ module JsonReportBuilder
           sheet.create_replace_value(value: '0123', replace_text: '<COMPANY_CODE>')
           sheet.create_replace_value(value: '1000000', replace_text: '<AMOUNT>', type: Object::ColObject::TYPE_DOUBLE)
           sheet.create_replace_value(value: '2017/1/1', replace_text: '<ORDER_DATE>', type: Object::ColObject::TYPE_DATE)
-          sheet.create_replace_value(value: '直接変更', replace_text: '<DIRECT_TEXT>')
+          sheet.create_replace_value(value: 'abc', replace_text: '<DIRECT_TEXT>')
+          sheet.create_replace_value(value: '', replace_text: '<BLANK>')
+          sheet.create_replace_value(value: nil, replace_text: '<NIL1>')
+          sheet.create_replace_value(value: nil, replace_text: '<NIL2>', use_nil: true)
         end
       end
     end
