@@ -17,12 +17,17 @@ module JsonReportBuilder
         attribute :print_row_index_end,   Integer, default: -1
         attribute :rows,                  Array[RowObject]
         attribute :merges,                Array[MergeObject]
-        attribute :replaceValues,         Array[ReplaceValueObject]
+        attribute :replace_values,        Array[ReplaceValueObject]
 
         def create_row(args)
           args = args.merge(row_index: rows.size) if args[:row_index].blank?
           rows << (row = RowObject.new(args))
           row
+        end
+
+        def create_replace_value(args)
+          replace_values << (replace_value = ReplaceValueObject.new(args))
+          replace_value
         end
       end
     end
