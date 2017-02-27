@@ -26,7 +26,7 @@ module JsonReportBuilder
         end
 
         def create_replace_value(args)
-          args[:value] = '' if args[:value].nil? && args[:use_nil]
+          args[:value] = '' if args[:value].nil? && !args[:use_nil]
           replace_values << (replace_value = ReplaceValueObject.new(args))
           replace_value
         end
