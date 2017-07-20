@@ -11,6 +11,7 @@ module JsonReportBuilder
         attribute :output_sheet_name,     String
         attribute :output_sheet_hide,     Boolean, default: false
         attribute :new_name,              String,  default: ''
+        attribute :copy_output_sheet,     Boolean, default: false
         attribute :print_col_index_start, Integer, default: -1
         attribute :print_col_index_end,   Integer, default: -1
         attribute :print_row_index_start, Integer, default: -1
