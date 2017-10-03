@@ -1,3 +1,3 @@
 module JsonReportBuilder
-  VERSION = '0.10.6'.freeze
+  VERSION = '0.11.1'.freeze
 end
