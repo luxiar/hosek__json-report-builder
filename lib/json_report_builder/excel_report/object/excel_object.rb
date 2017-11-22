@@ -8,6 +8,7 @@ module JsonReportBuilder
         attribute :template_file_name, String
         attribute :password,           String
         attribute :sheets,             Array[SheetObject]
+        attribute :active_sheet_index, Integer, default: -1
 
         def create_sheet(args)
           sheets << (sheet = SheetObject.new(args))
